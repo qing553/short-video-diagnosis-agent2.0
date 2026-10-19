@@ -1,3 +1,40 @@
+# Short-Video Diagnosis Agent (MVP)
+
+An AI Agent MVP built on a **"Rule Engine + LLM" dual-layer architecture**. It is designed to solve the "Cold Start attribution dilemma" for short-video creators.
+
+## 🎯 Problem & Solution
+- **The Pain Point**: Creators often see cold data like "3-second retention dropped to 18%", but lack actionable insights on exactly *which second* and *which script* caused the drop.
+- **The Solution**: A lightweight Agent that uses a Python Rule Engine for deterministic math and metric validation (preventing LLM hallucinations), and calls the DeepSeek LLM to analyze subtitle semantics, generating structured diagnostic reports.
+
+## 🏗️ Product Architecture
+To ensure stability and control, the system decouples deterministic calculation from probabilistic reasoning:
+1. `rule_engine.py` (**Deterministic Layer**): Calculates metrics (e.g., completion rate), compares them with baseline thresholds, and flags anomalies.
+2. `llm_agent.py` (**Probabilistic Layer**): Uses a strictly constrained Prompt Schema to analyze the text and output a 4-element report: `Evidence - Mechanism - Action - Expectation`.
+3. `app.py` (**Interaction Layer**): A Streamlit-based Web UI for data input and report generation.
+
+## 🚀 Quick Start (Demo)
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 短视频归因分析 AI Agent (MVP)
 
 这是一个基于“规则引擎 + LLM”双层架构的短视频数据分析 Agent MVP，旨在解决创作者在冷启动期“数据差但不知为何差”的痛点。
